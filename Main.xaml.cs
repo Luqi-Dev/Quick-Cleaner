@@ -22,7 +22,7 @@ namespace Quick_Clean
 			
 			FileFinder.Files_Finder();
 			
-			FileFinder.Size_Viewer();
+			FileFinder.Size_Viewer(); 
 									
 			JunkSize.Text = "Temporary files\n consumes " + FileFinder.Final.ToString() + " MB\n of your storage";
 			JunkSize.TextAlignment = TextAlignment.Center;		
