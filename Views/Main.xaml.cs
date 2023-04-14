@@ -28,23 +28,28 @@ namespace Quick_Clean
 			JunkSize.TextAlignment = TextAlignment.Center;		
 		}
 		
-		public void JunkCleaner(object sender, RoutedEventArgs e)
-		{
-			WhiteList whitelist = new WhiteList();
-			
-			whitelist.Kill();
-			
-			Temporary_Files_Finder FileFinder = new Temporary_Files_Finder();
-			
-			FileFinder.Files_Finder();
-			
-			foreach(string Files in Directory.GetFiles(FileFinder.TempPath))
-			{
-				File.Delete(Files);
-			}
-			
-			JunkSize.Text = "Temporary files\n consumes " + FileFinder.Final.ToString() + " MB\n of your storage";
-			JunkSize.TextAlignment = TextAlignment.Center;	
-		}
+	public void JunkCleaner(object sender, RoutedEventArgs e)
+        {
+            Temporary_Files_Finder FileFinder = new Temporary_Files_Finder();
+
+            FileFinder.Files_Finder();
+            
+            foreach (string Files in Directory.GetFiles(FileFinder.TempPath))
+            {   
+            	try
+            	{
+            		File.Delete(Files);
+            	}
+            	
+            	catch(IOException)
+            	{
+            		
+            	}
+            }
+
+            FileFinder.Size_Viewer();
+            JunkSize.Text = "Temporary files\n consumes " + FileFinder.Final.ToString() + " MB\n of your storage";
+            JunkSize.TextAlignment = TextAlignment.Center;
+        	}
 	}
 }
