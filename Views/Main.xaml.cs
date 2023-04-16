@@ -18,14 +18,12 @@ namespace Quick_Clean
 		{
 			InitializeComponent();
 			
-			Temporary_Files_Finder FileFinder = new Temporary_Files_Finder();
-			
-			FileFinder.Files_Finder();
-			
-			FileFinder.Size_Viewer();
-									
-			JunkSize.Text = "Temporary files\n consumes " + FileFinder.Final.ToString() + " MB\n of your storage";
-			JunkSize.TextAlignment = TextAlignment.Center;		
+            		PathFinder pathFinder = new PathFinder();
+            		pathFinder.Files_Finder();
+            		pathFinder.Size_Viewer();
+
+            		JunkSize.Text = "Temporary files\n consumes " + pathFinder.Final.ToString() + " MB\n of your storage";
+            		JunkSize.TextAlignment = TextAlignment.Center;		
 		}
 		
 	public void JunkCleaner(object sender, RoutedEventArgs e)
@@ -41,8 +39,8 @@ namespace Quick_Clean
         	
         	directoryDeletion.DirectoryDeleter();
 
-            	FileFinder.Size_Viewer();
-            	JunkSize.Text = "Temporary files\n consumes " + FileFinder.Final.ToString() + " MB\n of your storage";
+            	pathFinder.Size_Viewer();
+            	JunkSize.Text = "Temporary files\n consumes " + pathFinder.Final.ToString() + " MB\n of your storage";
             	JunkSize.TextAlignment = TextAlignment.Center;
         	}
 	}
