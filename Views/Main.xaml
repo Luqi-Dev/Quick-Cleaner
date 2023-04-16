@@ -17,7 +17,7 @@
 				<Image Source="../Assets/Control.png" Grid.Column="2" Width="20" Height="20" HorizontalAlignment="Right" Margin="15"/>
 			</Grid>
 		
-			<TextBox TextWrapping="Wrap" Text="Hi there" Name="JunkSize" Style="{StaticResource RoundedTextBox}"/>
+			<TextBox TextWrapping="Wrap" Name="JunkSize" Style="{StaticResource RoundedTextBox}"/>
 		
 			<Button Content="Clean Temporary Files" Style="{StaticResource CleanButton}" Click="JunkCleaner"/>
 		</StackPanel>
