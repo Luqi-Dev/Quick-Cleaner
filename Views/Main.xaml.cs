@@ -30,26 +30,20 @@ namespace Quick_Clean
 		
 	public void JunkCleaner(object sender, RoutedEventArgs e)
         {
-            Temporary_Files_Finder FileFinder = new Temporary_Files_Finder();
+		PathFinder pathFinder = new PathFinder();
+		pathFinder.Files_Finder();
+        	
+        	FileDeletion fileDeletion = new FileDeletion();
+        	
+        	fileDeletion.FileDeleter();
+        	
+        	DirectoryDeletion directoryDeletion = new DirectoryDeletion();
+        	
+        	directoryDeletion.DirectoryDeleter();
 
-            FileFinder.Files_Finder();
-            
-            foreach (string Files in Directory.GetFiles(FileFinder.TempPath))
-            {   
-            	try
-            	{
-            		File.Delete(Files);
-            	}
-            	
-            	catch(IOException)
-            	{
-            		
-            	}
-            }
-
-            FileFinder.Size_Viewer();
-            JunkSize.Text = "Temporary files\n consumes " + FileFinder.Final.ToString() + " MB\n of your storage";
-            JunkSize.TextAlignment = TextAlignment.Center;
+            	FileFinder.Size_Viewer();
+            	JunkSize.Text = "Temporary files\n consumes " + FileFinder.Final.ToString() + " MB\n of your storage";
+            	JunkSize.TextAlignment = TextAlignment.Center;
         	}
 	}
 }
